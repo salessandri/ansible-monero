@@ -1,4 +1,6 @@
 ---
-monero__version: 2020.6.6441
+monero__version: 0.17.1.9
 monero__container_name: monerod-node
 monero__data_dir: /var/monero/
+monero__p2p_port: 18080
+monero__rpc_port: 18081

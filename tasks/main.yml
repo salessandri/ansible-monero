@@ -1,2 +1,22 @@
----
-# tasks file for ansible-monero
+- name: 'Creating data directory for Monero'
+  file:
+    path: '{{ monero__data_dir }}'
+    owner: 1337
+    group: 1337
+    mode: '750'
+    state: directory
+
+- name: "Setup Monero's docker container"
+  docker_container:
+    name: '{{ monero__container_name }}'
+    image: 'salessandri/monerod:{{ monero__version }}'
+    mounts:
+      - source: "{{ monero__data_dir }}"
+        target: /home/monero/.bitmonero
+        type: bind
+    networks_cli_compatible: yes
+    published_ports:
+      - "0.0.0.0:{{ monero__p2p_port }}:18080/tcp"
+      - "0.0.0.0:{{ monero__rpc_port }}:18081/tcp"
+    restart_policy: 'unless-stopped'
+    state: started
