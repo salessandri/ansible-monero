@@ -1,13 +1,21 @@
 - name: 'Creating data directory for Monero'
-  file:
+  ansible.builtin.file:
     path: '{{ monero__data_dir }}'
-    owner: 1337
-    group: 1337
+    owner: '1337'
+    group: '1337'
     mode: '750'
     state: directory
 
+- name: 'Copy monero config file'
+  ansible.builtin.copy:
+    src: '{{ monero__config_file }}'
+    dest: '{{ monero__data_dir }}/monerod.conf'
+    owner: '1337'
+    group: '1337'
+    mode: '660'
+
 - name: "Setup Monero's docker container"
-  docker_container:
+  community.general.docker_container:
     name: '{{ monero__container_name }}'
     image: 'salessandri/monerod:{{ monero__version }}'
     mounts:
@@ -20,3 +28,7 @@
       - "0.0.0.0:{{ monero__rpc_port }}:18081/tcp"
     restart_policy: 'unless-stopped'
     state: started
+    command:
+      - '--config-file'
+      - '/home/monero/.bitmonero/monerod.conf'
+      - '--non-interactive'
