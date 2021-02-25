@@ -1,0 +1,4 @@
+---
+monero__version: 2020.6.6441
+monero__container_name: monerod-node
+monero__data_dir: /var/monero/
