@@ -1,5 +1,5 @@
 ---
-monero__version: 0.17.1.9
+monero__version: 0.17.2.0
 monero__container_name: monerod-node
 monero__data_dir: /var/monero/
 monero__config_file: files/monerod.conf
