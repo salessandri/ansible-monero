@@ -22,7 +22,7 @@
       - source: "{{ monero__data_dir }}"
         target: /home/monero/.bitmonero
         type: bind
-    networks_cli_compatible: yes
+    networks_cli_compatible: true
     published_ports:
       - "0.0.0.0:{{ monero__p2p_port }}:18080/tcp"
       - "0.0.0.0:{{ monero__rpc_port }}:18081/tcp"
