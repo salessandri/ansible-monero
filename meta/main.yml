@@ -1,4 +1,5 @@
 galaxy_info:
+  namespace: salessandri
   role_name: monero
   author: Santiago Alessandri
   description: Monero full node setup using a docker container
