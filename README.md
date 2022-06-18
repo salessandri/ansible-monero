@@ -11,7 +11,7 @@ For the `docker_container` python module, [`geerlingguy.pip` role](https://galax
 
 ## Role Variables
 
- - **`monero__version`** (optional, default: _0.17.2.3_): Image version tag to use.
+ - **`monero__version`** (optional, default: _0.17.3.2_): Image version tag to use.
  - **`monero__container_name`** (optional, default: _monerod-node_): Name to use for the container created by the role.
  - **`monero__data_dir`** (optional, default _/var/monero/_): Folder to use for persistent files.
  - **`monero__config_file`** (optional, default: _files/monerod.conf_): Config file for the service.
